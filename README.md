@@ -22,7 +22,7 @@ If the R, G, and B values of some pixel in a BMP are, say, `0xff`, `0x00`, and `
 Write a program to apply filters to BMPs.
 
 
-![Demo](https://github.com/cmartinezal/image-filter/assets/84383847/390f652f-895d-4843-9132-d5cbb069b127)
+<img width="600" alt="Demo" src="https://github.com/cmartinezal/image-filter/assets/84383847/390f652f-895d-4843-9132-d5cbb069b127">
 
 
 ## Background
@@ -34,7 +34,9 @@ Recall that a file is just a sequence of bits, arranged in some fashion. A 24-bi
 
 The first of these headers, called `BITMAPFILEHEADER`, is 14 bytes long. (Recall that 1 byte equals 8 bits.) The second of these headers, called `BITMAPINFOHEADER`, is 40 bytes long. Immediately following these headers is the actual bitmap: an array of bytes, triples of which represent a pixel’s color. However, BMP stores these triples backwards (i.e., as BGR), with 8 bits for blue, followed by 8 bits for green, followed by 8 bits for red. (Some BMPs also store the entire bitmap backwards, with an image’s top row at the end of the BMP file. But we’ve stored this problem set’s BMPs as described herein, with each bitmap’s top row first and bottom row last.) In other words, were we to convert the 1-bit smiley above to a 24-bit smiley, substituting red for black, a 24-bit BMP would store this bitmap as follows, where `0000ff` signifies red and `ffffff` signifies white; we’ve highlighted in red all instances of `0000ff`.
 
-![red_smile](https://github.com/cmartinezal/image-filter/assets/84383847/e890a2f2-c624-4d54-b3d9-e10a2f1b8a84)
+
+<img width="500" alt="red_smile" src="https://github.com/cmartinezal/image-filter/assets/84383847/e890a2f2-c624-4d54-b3d9-e10a2f1b8a84">
+
 
 Because we’ve presented these bits from left to right, top to bottom, in 8 columns, you can actually see the red smiley if you take a step back.
 
@@ -71,7 +73,7 @@ There are a number of ways to create the effect of blurring or softening an imag
 
 Consider the following grid of pixels, where we’ve numbered each pixel.
 
-![grid](https://github.com/cmartinezal/image-filter/assets/84383847/ebd1551a-ff04-49ac-b713-80c8bd31863a)
+<img width="150" alt="grid" src="https://github.com/cmartinezal/image-filter/assets/84383847/ebd1551a-ff04-49ac-b713-80c8bd31863a">
 
 The new value of each pixel would be the average of the values of all of the pixels that are within 1 row and column of the original pixel (forming a 3x3 box). For example, each of the color values for pixel 6 would be obtained by averaging the original color values of pixels 1, 2, 3, 5, 6, 7, 9, 10, and 11 (note that pixel 6 itself is included in the average). Likewise, the color values for pixel 11 would be be obtained by averaging the color values of pixels 6, 7, 8, 10, 11, 12, 14, 15 and 16.
 
